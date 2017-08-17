@@ -18,8 +18,6 @@ app.engine('mustache', mustacheExpress());
 app.set('views', './views')
 app.set('view engine', 'mustache')
 
-
-
 let data = {
   list: [
     {
@@ -34,12 +32,11 @@ let data = {
   ]
 };
 
+let listArr = data.list;
 
 app.get("/", function(req, res) {
   res.render("index", data)
 });
-
-// TODO: Create a function that "completes the task upon click"
 
 app.post("/", function(req, res) {
   let newTask = req.body.task;
@@ -47,6 +44,19 @@ app.post("/", function(req, res) {
   data.list.push(newTodo);
   res.render("index", data);
 });
+
+app.post("/complete", function(req, res) {
+  // console.log(req.body);
+  function isMarked(element) {
+      if (element.todo === req.body.marked) {
+        element.yetTodo = false;
+      }
+  }
+  listArr.find(isMarked);
+  // console.log(`req.body.marked is: ${req.body.marked}`);
+  // console.log(listArr);
+  res.redirect('/');
+})
 
 app.listen(3000, function(){
   console.log("Woooohoooo!");

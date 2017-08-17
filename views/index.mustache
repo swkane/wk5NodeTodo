@@ -4,6 +4,13 @@
     <meta charset="utf-8">
     <title>Todo - Node</title>
     <link rel="stylesheet" href="./public/style.css">
+    <style type="text/css">
+      li {
+        /*color: blue;*/
+        list-style: none;
+        margin: 5px;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -15,14 +22,24 @@
       <ul class="todo-list">
         {{#list}}
             {{#yetTodo}}
-            <li>
-              <button type="button" name="complete">Mark as Complete</button>{{todo}}
-            </li>
+            <form class="" action="/complete" method="post">
+              <li>
+              <button type="submit" name="marked" value="{{todo}}">Mark as Complete</button>
+              {{todo}}
+              </li>
+            </form>
             {{/yetTodo}}
         {{/list}}
       </ul>
       <h2>Completed Tasks</h2>
-      <ul>
+      <ul class="completed-list">
+        {{#list}}
+            {{^yetTodo}}
+              <li>
+              {{todo}}
+              </li>
+            {{/yetTodo}}
+        {{/list}}
 <!-- Populate completed task when their button is clicked -->
       </ul>
     </div>
