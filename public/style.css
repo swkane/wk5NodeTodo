@@ -1,0 +1,10 @@
+/* TODO: link style sheet and take off bullet points */
+li {
+  list-style: none;
+  color: red;
+}
+
+h2 {
+  color: red;
+  background-color: red;
+}

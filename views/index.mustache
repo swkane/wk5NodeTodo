@@ -3,24 +3,28 @@
   <head>
     <meta charset="utf-8">
     <title>Todo - Node</title>
+    <link rel="stylesheet" href="./public/style.css">
   </head>
   <body>
     <div class="container">
       <h2>Todo List</h2>
       <form class="" action="/" method="post">
         <input type="text" name="task" value="" placeholder="Enter Your Task Here">
-        <button type="" name="complete">Add Todo</button>
+        <button type="submit" name="complete">Add Todo</button>
       </form>
       <ul class="todo-list">
         {{#list}}
             {{#yetTodo}}
             <li>
-              {{todo}}
+              <button type="button" name="complete">Mark as Complete</button>{{todo}}
             </li>
             {{/yetTodo}}
         {{/list}}
       </ul>
       <h2>Completed Tasks</h2>
+      <ul>
+<!-- Populate completed task when their button is clicked -->
+      </ul>
     </div>
   </body>
 </html>
